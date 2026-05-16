@@ -1,3 +1,69 @@
+#singh-sidebar {
+    background-color: #103948;
+    padding: 25px 20px;
+    border-radius: 8px; 
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+    min-height: 85vh;
+    height: auto;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+#singh-sidebar img {
+    margin-bottom: 10px;
+    border-radius: 50%; 
+    max-width: 100%;
+    height: auto;
+}
+
+#singh-side-title {
+    color: #fff8e9; 
+    font-weight: bold;
+    margin-bottom: 0;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+#singh-side-text {
+    color: #90cbd4;
+    margin-bottom: 10px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+#singh-sidebar a {
+    display: block;
+    color: #fff8e9;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-weight: 500;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+#singh-sidebar a:hover {
+    color: #fff8e9;
+    background-color: #a74258;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    transform: translateX(4px);
+}
+
+#dBod::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url("bg.png") no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(3px);
+    opacity: 0.15; 
+    z-index: -1;
+}
 #dBod {
      background-color: #f8f9fa;
      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
