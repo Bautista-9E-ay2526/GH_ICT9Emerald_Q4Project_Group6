@@ -1,0 +1,359 @@
+/* ============================================================
+   notebooks.css — Virtual Notebooks Page Styles
+   Student Portal System | ICT 9 Fourth Quarter 2025-2026
+   ============================================================ */
+
+/* ===== RESET & BASE ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  min-height: 100vh;
+  background-color: #f0f4f8;
+}
+
+/* ===== BACKGROUND IMAGE ===== */
+#reyes-body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url("bg.png") no-repeat center center fixed;
+  background-size: cover;
+  filter: blur(3px);
+  opacity: 0.15;
+  z-index: -1;
+}
+
+#reyes-body {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+/* ===== SIDEBAR ===== */
+#reyes-sidebar {
+  background-color: #103948;
+  padding: 25px 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 85vh;
+  height: auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+#reyes-sidebar img {
+  margin-bottom: 10px;
+  border-radius: 50%;
+  max-width: 100%;
+  height: auto;
+}
+
+#reyes-side-title {
+  color: #fff8e9;
+  font-weight: bold;
+  margin-bottom: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+#reyes-side-text {
+  color: #90cbd4;
+  margin-bottom: 10px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+#reyes-sidebar a {
+  display: block;
+  color: #fff8e9;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-weight: 500;
+  transition: all 0.25s ease-in-out;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+#reyes-sidebar a:hover,
+#reyes-sidebar a.active {
+  color: #fff8e9;
+  background-color: #a74258;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+  transform: translateX(4px);
+}
+
+/* ===== MAIN CONTENT AREA ===== */
+#notebooks-main {
+  padding: 20px 15px;
+}
+
+/* Page header badge */
+#notebooks-header-badge {
+  background-color: #1a1a2e;
+  color: #fff8e9;
+  font-size: 1.3rem;
+  font-weight: 800;
+  padding: 10px 22px;
+  border-radius: 6px;
+  display: inline-block;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+#notebooks-sub {
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 22px;
+}
+
+/* ===== SUBJECT CARDS ===== */
+.subject-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 18px 16px 14px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.10);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  height: 100%;
+  border-bottom: 4px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.subject-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Accent colors per subject */
+.card-filipino  { border-bottom-color: #e74c3c; }
+.card-english   { border-bottom-color: #3498db; }
+.card-math      { border-bottom-color: #2ecc71; }
+.card-science   { border-bottom-color: #9b59b6; }
+.card-socstud   { border-bottom-color: #f39c12; }
+.card-values    { border-bottom-color: #1abc9c; }
+.card-ict       { border-bottom-color: #e67e22; }
+.card-pe     { border-bottom-color: #e91e63; }
+
+.subject-card h5 {
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: #1a1a2e;
+  margin-bottom: 4px;
+}
+
+.subject-card .notebook-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.subject-card .card-section {
+  font-size: 0.78rem;
+  color: #777;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.subject-card .card-teacher {
+  font-size: 0.82rem;
+  color: #444;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.card-open-btn {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-top: 1px solid #eee;
+  padding-top: 8px;
+  color: #103948;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.card-open-btn:hover {
+  color: #a74258;
+}
+
+/* ===== MODAL / NOTEBOOK VIEWER ===== */
+#notebook-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10,20,30,0.55);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+}
+
+#notebook-modal-overlay.show {
+  display: flex;
+}
+
+#notebook-modal {
+  background: #fff;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 640px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+  animation: slideUp 0.25s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+#notebook-modal-header {
+  padding: 20px 24px 14px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#notebook-modal-header h4 {
+  font-weight: 800;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+#notebook-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #666;
+  line-height: 1;
+}
+
+#notebook-modal-close:hover {
+  color: #a74258;
+}
+
+#notebook-modal-body {
+  padding: 20px 24px;
+}
+
+.notebook-entry {
+  background: #f7f9fc;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  border-left: 4px solid #103948;
+}
+
+.notebook-entry h6 {
+  font-weight: 700;
+  color: #103948;
+  margin-bottom: 4px;
+  font-size: 0.92rem;
+}
+
+.notebook-entry p {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.notebook-entry .entry-date {
+  font-size: 0.75rem;
+  color: #999;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.add-note-area {
+  margin-top: 16px;
+  border-top: 1px solid #eee;
+  padding-top: 16px;
+}
+
+.add-note-area p {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #1a1a2e;
+  margin-bottom: 8px;
+}
+
+.add-note-area textarea {
+  width: 100%;
+  border: 1px solid #dde3ea;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.88rem;
+  resize: vertical;
+  min-height: 80px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.add-note-area textarea:focus {
+  border-color: #103948;
+}
+
+.add-note-btn {
+  margin-top: 8px;
+  background-color: #103948;
+  color: #fff8e9;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 22px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.add-note-btn:hover {
+  background-color: #a74258;
+  transform: translateY(-1px);
+}
+
+/* ===== FOOTER ===== */
+#reyes-footer {
+  position: fixed;
+  bottom: 0px;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+  width: auto;
+  background-color: rgba(120, 120, 120, 0.8) !important;
+  padding: 10px 30px;
+}
+
+#reyes-footer p {
+  color: white !important;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  #reyes-sidebar { min-height: auto; }
+  #notebooks-main { padding: 12px 8px; }
+}
